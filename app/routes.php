@@ -39,18 +39,23 @@ Route::get('/sayhello/{name}', function($name)
     }
     else
     {
-    	// $data = array (
-    	// 	'name' => $name
-    	// 	);
+    	$data = array (
+    		'newName' => $name
+    		);
         return View::make('temp.my-first-view')->with('name', $name);
     }
 });
 
+// roll dice guess game
 Route::get('/rolldice/{guess}', function($rollGuess){
-	$random = rand(1, 6);
-	$data = array(
-		'random' => $random,
-		'rollGuess' => $rollGuess
-		);
-	return View::make('temp.roll-dice')->with($data);
+	if (!is_numeric($rollGuess)){
+		return Redirect::to('/roll-dice');
+	} else {
+		$random = rand(1, 6);
+		$data = array(
+			'newRandom' => $random,
+			'newRollGuess' => $rollGuess
+			);
+		return View::make('temp.roll-dice')->with($data);
+	}	
 });
