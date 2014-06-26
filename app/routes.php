@@ -11,25 +11,46 @@
 |
 */
 Route::get('/', function(){
-	return 'we are home';
+	// route handles folder "/" with "."
+	// does not need file ext because it knows its PHP
+	// 'View' is a constant, '::'
+	return View::make('temp.my-first-view'); 
 });
 
-// Route::get('/sayhello/{name}', function($name)
-// {
-// 	// return 'View::make('hello')';
-// 	if ($name == "Chris")
-//     {
-//         return Redirect::to('/');
-//     }
-//     else
-//     {
-//         return "Hello, $name!";
-//     }
-// });
 Route::get('/resume', function(){
 	return 'This is my Resume';
 });
 
 Route::get('/portfolio', function(){
 	return 'this is my portfolio';
+});
+
+// whatever is passed after contacts. in browser becomes id var
+
+Route::get('/contacts/{id}', function($contactId){
+	return View::make('contact.show')->with('contact_id', $contactId); // with key, value
+});
+
+Route::get('/sayhello/{name}', function($name)
+{
+    if ($name == "Mike")
+    {
+        return Redirect::to('/');
+    }
+    else
+    {
+    	// $data = array (
+    	// 	'name' => $name
+    	// 	);
+        return View::make('temp.my-first-view')->with('name', $name);
+    }
+});
+
+Route::get('/rolldice/{guess}', function($rollGuess){
+	$random = rand(1, 6);
+	$data = array(
+		'random' => $random,
+		'rollGuess' => $rollGuess
+		);
+	return View::make('temp.roll-dice')->with($data);
 });
