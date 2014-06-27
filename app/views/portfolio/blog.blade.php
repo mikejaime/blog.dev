@@ -12,7 +12,7 @@
 					<h4>The Amazing Spiderman</h4>
 					<p><b>Spider-Man</b> is a fictional character, a comic book superhero that appears in comic books published by Marvel Comics. Created by writer-editor Stan Lee and writer-artist Steve Ditko, he first appeared in Amazing Fantasy #15 (cover-dated Aug. 1962). </p>
 					<p>Lee and Ditko conceived the character as an orphan being raised by his Aunt May and Uncle Ben, and as a teenager, having to deal with the normal struggles of adolescence in addition to those of a costumed crimefighter.</p>
-					<p><a href="blog01.html">Continue Reading...</a></p>
+					<p><a {{{action('HomeController@b_entry');}}}>Continue Reading...</a></p>
 				</div>
 
 			</div><!-- /row -->
@@ -29,7 +29,7 @@
 					<h4>An Image Post</h4>
 					<p><img class="img-responsive" src="/img/blog01.jpg" alt=""></p>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-					<p><a href="blog01.html">Continue Reading...</a></p>
+					<p><a {{{action('HomeController@b_entry');}}}>Continue Reading...</a></p>
 				</div>
 
 			</div><!-- /row -->
