@@ -10,52 +10,53 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/', function(){
-	// route handles folder "/" with "."
-	// does not need file ext because it knows its PHP
-	// 'View' is a constant, '::'
-	return View::make('temp.my-first-view'); 
-});
 
-Route::get('/resume', function(){
-	return 'This is my Resume';
-});
+// START NAVIGATION ROUTES ///////////////////////
+Route::get('/index', 'HomeController@index');
 
-Route::get('/portfolio', function(){
-	return 'this is my portfolio';
-});
+Route::get('/about', 'HomeController@about');
+
+Route::get('/portfolio', 'HomeController@portfolio');
+	Route::get('/p_entry', 'HomeController@p_entry');
+
+Route::get('/resume', 'HomeController@resume');
+
+Route::get('/blog', 'HomeController@blog');
+
+Route::get('/contact', 'HomeController@contact');
+///// END NAVIGATION ROUTES ////////////////////
+
+Route::resource('/posts', 'PostsController');
+
+
+
+// Route::get('/', function(){
+// 	// route handles folder "/" with "."
+// 	// does not need file ext because it knows its PHP
+// 	// 'View' is a constant, '::'
+// 	return View::make('temp.my-first-view'); 
+// });
 
 // whatever is passed after contacts. in browser becomes id var
 
-Route::get('/contacts/{id}', function($contactId){
-	return View::make('contact.show')->with('contact_id', $contactId); // with key, value
-});
+// Route::get('/contacts/{id}', function($contactId){
+// 	return View::make('contact.show')->with('contact_id', $contactId); // with key, value
+// });
 
-Route::get('/sayhello/{name}', function($name)
-{
-    if ($name == "Mike")
-    {
-        return Redirect::to('/');
-    }
-    else
-    {
-    	$data = array (
-    		'newName' => $name
-    		);
-        return View::make('temp.my-first-view')->with('name', $name);
-    }
-});
+// Route::get('/'
 
-// roll dice guess game
-Route::get('/rolldice/{guess}', function($rollGuess){
-	if (!is_numeric($rollGuess)){
-		return Redirect::to('/roll-dice');
-	} else {
-		$random = rand(1, 6);
-		$data = array(
-			'newRandom' => $random,
-			'newRollGuess' => $rollGuess
-			);
-		return View::make('temp.roll-dice')->with($data);
-	}	
-});
+// Route::get('/sayhello/{name}', 'HomeController@sayHello')
+
+// // roll dice guess game
+// Route::get('/rolldice/{guess}', function($rollGuess){
+// 	if (!is_numeric($rollGuess)){
+// 		return Redirect::to('/roll-dice');
+// 	} else {
+// 		$random = rand(1, 6);
+// 		$data = array(
+// 			'newRandom' => $random,
+// 			'newRollGuess' => $rollGuess
+// 			);
+// 		return View::make('temp.roll-dice')->with($data);
+// 	}	
+// });
