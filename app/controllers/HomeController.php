@@ -15,10 +15,6 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
 
 	// START NAVIGATION METHODS ///////////////
 	public function index() 
@@ -55,11 +51,16 @@ class HomeController extends BaseController {
 				return View::make('portfolio.b_entry');
 			}
 
-	public function sayHello($name)
-	{
-    	$data = array (
-    		'newName' => $name
-    		);
-        return View::make('temp.my-first-view')->with($data);
-	}
+	// public function showWelcome()
+	// {
+	// 	return View::make('hello');
+	// }
+
+	// public function sayHello($name)
+	// {
+ //    	$data = array (
+ //    		'newName' => $name
+ //    		);
+ //        return View::make('temp.my-first-view')->with($data);
+	// }
 }
