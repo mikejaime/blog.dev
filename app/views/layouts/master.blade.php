@@ -27,15 +27,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index">MICHAEL JAIME</a>
+          <a class="navbar-brand" href="/index">MICHAEL JAIME</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="about">About</a></li>
-            <li><a href="portfolio">Portfolio</a></li>
-            <li><a href="resume">Resume</a></li>
-            <li><a href="blog">Blog</a></li>
-            <li><a href="contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/resume">Resume</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
