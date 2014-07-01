@@ -10,7 +10,7 @@ class PostsController extends \BaseController {
 	// VIEW ALL POSTS ///////////////////////
 	public function index()
 	{
-		$posts = Post::all();		
+		$posts = Post::paginate(5);		
 		return View::make('posts.index')->with('posts', $posts);
 	}
 
@@ -23,7 +23,7 @@ class PostsController extends \BaseController {
 	// CREATE NEW POST ///////////////////////
 	public function create()
 	{
-		return View::make('posts.create');
+		return View::make('posts.create-edit');
 	}
 
 
@@ -75,7 +75,7 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		$post = Post::findOrFail($id);
-		return View::make('posts.edit')->with('post', $post);
+		return View::make('posts.create-edit')->with('post', $post);
 	}
 
 
