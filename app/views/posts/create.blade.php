@@ -3,6 +3,8 @@
 @section('content')
 <div class="container">
 	<h1>Create Post:</h1>
+	{{ $errors->first('title', '<span class="help-block">:message</span><br>') }}
+	{{ $errors->first('body', '<span class="help-block">:message</span><br>') }}
 	<!-- action is sending to the store method in post controller -->
 	<form action="{{{ action('PostsController@store') }}}" method="POST">
 		<label for="Title">Title:</label>
