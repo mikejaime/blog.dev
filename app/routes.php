@@ -21,12 +21,15 @@ Route::get('/portfolio', 'HomeController@portfolio');
 
 Route::get('/resume', 'HomeController@resume');
 
-Route::get('/blog', 'HomeController@blog');
+Route::get('/blog', 'PostsController@index');
 
 Route::get('/contact', 'HomeController@contact');
-///// END NAVIGATION ROUTES ////////////////////
+// END NAVIGATION ROUTES /////////////////////////
 
+// POST CONTROLLERS
 Route::resource('/posts', 'PostsController');
+
+Route::get('/orm-test', 'PostsController');
 
 
 
