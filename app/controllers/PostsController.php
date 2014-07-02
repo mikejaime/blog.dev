@@ -45,11 +45,11 @@ class PostsController extends \BaseController {
 		}
 		else
 		{
-			Session::flash('successMessage', 'Submitted Successfully');
 			$post = new Post();
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
 			$post->save();
+			Session::flash('successMessage', 'Submitted Successfully');
 			return Redirect::action ('PostsController@index');	
 		}		
 	}
@@ -90,11 +90,11 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		Session::flash('successMessage', 'Upadated Successfully');
 		$post = Post::findOrFail($id);
 		$post->title = Input::get('title');
 		$post->body = Input::get('body');
 		$post->save();
+		Session::flash('successMessage', 'Upadated Successfully');
 		return Redirect::action ('PostsController@index');
 	}
 
@@ -107,8 +107,10 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+		$post = Post::findOrFail($id);
+		$post->delete();
 		Session::flash('successMessage', 'Successfully Deleted');
-		return ('Delete a specific post');
+		return Redirect::action ('PostsController@index');
 	}
 
 
