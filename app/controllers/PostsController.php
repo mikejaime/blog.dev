@@ -40,10 +40,12 @@ class PostsController extends \BaseController {
 
 		if ($validator->fails()) 
 		{
+			Session::flash('errorMessage', 'Oh No, Houston we have a problem...');
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
 		else
 		{
+			Session::flash('successMessage', 'Submitted Successfully');
 			$post = new Post();
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
@@ -88,6 +90,7 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		Session::flash('successMessage', 'Upadated Successfully');
 		$post = Post::findOrFail($id);
 		$post->title = Input::get('title');
 		$post->body = Input::get('body');
@@ -104,6 +107,7 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+		Session::flash('successMessage', 'Successfully Deleted');
 		return ('Delete a specific post');
 	}
 
