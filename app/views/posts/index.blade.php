@@ -8,7 +8,7 @@
 		<div>
 			<span>
 				<h4> {{ link_to_action('PostsController@show', $post->title, array($post->id)) }} </h4>
-				<small>{{{$post->created_at}}}</small><br>
+				<small>{{{$post->created_at->setTimezone('America/Chicago')->diffForHumans()}}}</small><br>
 				<p>	{{{$post->body}}} </p>
 			</span>
 			<span>
