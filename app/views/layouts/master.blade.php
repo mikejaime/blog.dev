@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/index">MICHAEL JAIME</a>
+          <a class="navbar-brand" href="/index"><img src="/img/mikejaime-logo-small.png"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -38,10 +38,17 @@
             <li><a href="/contact">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
+
       </div>
     </div>
 
-	
+	 @if (Session::has('successMessage'))
+                <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+            @endif
+            @if (Session::has('errorMessage'))
+                <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+            @endif
+            
     @yield('content')
 
 
