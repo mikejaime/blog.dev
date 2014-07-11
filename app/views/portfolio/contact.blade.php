@@ -28,7 +28,7 @@
 				  </div>
 				  <textarea class="form-control" rows="6" placeholder="Enter your text here"></textarea>
 				    <br>
-				  <button type="submit" class="btn btn-success">SUBMIT</button>
+				  <button type="submit" class="btn btn-default">SUBMIT</button>
 				</form>    			
 			</div>
 		</div><!-- /row -->

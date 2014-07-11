@@ -11,6 +11,14 @@
 |
 */
 
+// START LOGIN/LOGOUT AUTH ///////////////////////
+Route::get('/login', 'HomeController@showLogin');
+Route::post('/login', 'HomeController@doLogin');
+Route::get('/logout', 'HomeController@logout');
+
+Route::get('/', 'HomeController@index');
+//////////////////////////////////////////////////
+
 // START NAVIGATION ROUTES ///////////////////////
 Route::get('/index', 'HomeController@index');
 

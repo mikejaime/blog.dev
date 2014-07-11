@@ -33,7 +33,7 @@ class AddUserFirstLastName extends Migration {
 		Schema::table('users', function(Blueprint $table)
 		{
 			//
-			$table->drop_column('first_name', 'middle_name', 'last_name', 'role');
+			$table->dropColumn('first_name', 'middle_name', 'last_name', 'role');
 		});
 	}
 

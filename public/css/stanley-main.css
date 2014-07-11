@@ -46,9 +46,19 @@ p {
     text-align: center;
 }
 
+/* Post Images */
+
+.post-img {
+   display: block;
+   /*background: url(sprite.png) no-repeat;*/
+   background-color: 'gray';
+   height: 300px;
+   width: 300px;
+}
+
 /* Links */
 a {
-    color: #1abc9c;
+    color: #0085F2;
     word-wrap: break-word;
 
     -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
@@ -95,12 +105,22 @@ a:after {
 }
 
 .navbar-inverse {
-	background-color: #1abc9c;
-	border-color: #16a085;
+	background-color: #0085F2;
+	border-color: #0085F2;
 }
 
 .navbar-inverse .navbar-nav > li > a {
 	color: white;
+}
+
+.login-buttons{
+	color: white;
+	font-size: 12px;
+}
+
+.login-buttons > a{
+	color: white;
+	font-size: 12px;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {

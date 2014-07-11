@@ -7,7 +7,7 @@
             });
             
             $('.green').hoverZoom({
-                overlayColor: '#1abc9c',
+                overlayColor: '#95F24E',
                 zoom: 0
             });
             

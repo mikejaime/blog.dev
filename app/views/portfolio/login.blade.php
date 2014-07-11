@@ -1,31 +1,37 @@
 @extends('layouts.master')
 
 @section('content')
-<div class='container'>
-	{{ Form::open(array('action' => 'HomeController@doLogin', 'method' => 'post')) }}
-	<h2><span class="glyphicon glyphicon-lock"></span></h2>
-	<div class="form-group">
-	    <label for="email">Email Address</label>
-	    <input type="email" class="form-control" name="email" id="email" placeholder="enter email...">
-	  </div>
-	  <div class="form-group">
-	    <label for="password">Password</label>
-	    <input type="password" class="form-control" name="password" id="password" placeholder="password...">
-	  </div>
-	  <div class="form-group">
-    	<div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Remember me
-        </label>
+
+
+<div class="container pt">
+    <div class="row mt">
+      <div class="col-lg-6 col-lg-offset-3 centered">
+        <h3><span class="fa fa-lock"></span> Please Login</h3>
+        <hr>
       </div>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Sign in</button>
-    </div>
-  </div>
-	{{ Form::close() }}
-</div>
+    <div class="row mt">  
+      <div class="col-lg-8 col-lg-offset-2">
+        {{ Form::open(array('action' => 'HomeController@doLogin', 'method' => 'post', 'role' => 'form')) }}
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+            <br>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            <br>
+          </div>
+          <div class="form-group checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-default">Sign in</button>
+          </div>
+        {{ Form::close() }}       
+      </div>
+    </div><!-- /row -->
+  </div><!-- /container -->
+
 @stop

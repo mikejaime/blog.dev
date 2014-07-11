@@ -13,8 +13,8 @@
 		</div>
 		<div class="row mt centered">	
 			<div class="col-lg-4">
-				<a class="zoom green" href="work01.html"><img class="img-responsive" src="/img/portfolio/port01.jpg" alt="" /></a>
-				<p>APE</p>
+				<a class="zoom green" href="work01.html"><img class="img-responsive" src="/img/portfolio/port-entform-logo.jpg" alt="" /></a>
+				<p>ENTFORM BRAND & WEB DESIGN</p>
 			</div>
 			<div class="col-lg-4">
 				<a class="zoom green" href="work01.html"><img class="img-responsive" src="/img/portfolio/port02.jpg" alt="" /></a>
