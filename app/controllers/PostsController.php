@@ -2,6 +2,16 @@
 
 class PostsController extends \BaseController {
 
+	public function __construct()
+	{
+	    // call base controller constructor
+	    parent::__construct();
+
+	    // run auth filter before all methods on this controller except index and show
+	    $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+	}
+	
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -10,8 +20,18 @@ class PostsController extends \BaseController {
 	// VIEW ALL POSTS ///////////////////////
 	public function index()
 	{
-		// $posts = Post::paginate(5);	
-		$posts = Post::orderBy('id', 'DESC')->paginate(5);	
+		
+
+		if(Input::has('search'))
+		{
+			$search = Input::get('search');
+			$posts = Post::with('user')->where('title', 'LIKE', "%$search%")->paginate(5);
+		}
+		else
+		{
+			$posts = Post::with('user')->orderBy('id', 'DESC')->paginate(5);
+		}
+
 		return View::make('posts.index')->with('posts', $posts);
 	}
 
@@ -46,9 +66,17 @@ class PostsController extends \BaseController {
 		else
 		{
 			$post = new Post();
+			$post->user_id = Auth::user()->id;
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
+			$post->slug = '';
 			$post->save();
+			if (Input::hasFile('image') && Input::file('image')->isValid())
+			{
+				$post->addUploadedImage(Input::file('image'));
+				$post->save();
+			}
+
 			Session::flash('successMessage', 'Submitted Successfully');
 			return Redirect::action ('PostsController@index');	
 		}		
@@ -62,9 +90,10 @@ class PostsController extends \BaseController {
 	 * @return Response
 	 */
 	// SHOW SPECIFIC POST /////////////////////
-	public function show($id)
+	public function show($slug)
 	{
-		$post = Post::findOrFail($id);
+		$post = Post::where('slug', $slug)->firstOrFail();
+		$post->body = Parsedown::instance()->parse($post->body);
 		return View::make('posts.show')->with('post', $post);
 	}
 
@@ -91,9 +120,18 @@ class PostsController extends \BaseController {
 	public function update($id)
 	{
 		$post = Post::findOrFail($id);
+		$post->user_id = Auth::user()->id;
 		$post->title = Input::get('title');
 		$post->body = Input::get('body');
+		$post->slug = '';
 		$post->save();
+
+		if (Input::hasFile('image') && Input::file('image')->isValid())
+			{
+				$post->addUploadedImage(Input::file('image'));
+				$post->save();
+			}
+
 		Session::flash('successMessage', 'Upadated Successfully');
 		return Redirect::action ('PostsController@index');
 	}
@@ -112,6 +150,7 @@ class PostsController extends \BaseController {
 		Session::flash('successMessage', 'Successfully Deleted');
 		return Redirect::action ('PostsController@index');
 	}
+
 
 
 }

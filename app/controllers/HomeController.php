@@ -15,11 +15,48 @@ class HomeController extends BaseController {
 	|
 	*/
 
+	// START USER LOGIN AUTH ///////////////////
+	public function showLogin()
+	{
+		return View::make('portfolio.login');
+	}
+
+
+	public function doLogin()
+	{
+		$email = Input::get('email');
+		$password = Input::get('password');
+
+		if (Auth::attempt(array('email' => $email, 'password' => $password)))
+		{
+			Session::flash('successMessage', 'login successful!');
+			return Redirect::intended(action('HomeController@index'));
+		}
+		else
+		{
+			Session::flash('errorMessage', 'email or password not found!');
+			return Redirect::action('HomeController@showLogin')->withInput();
+		}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		Session::flash('successMessage', 'logout successful!');
+		return Redirect::action('HomeController@index');
+	}
+
+	// public function showWelcome()
+	// {
+		
+	// }
+	// END USER AUTH //////////////////////////
+
 
 	// START NAVIGATION METHODS ///////////////
 	public function index() 
 	{
-		return View::make('portfolio.index');
+		return View::make('portfolio.about');
 	}
 
 	public function about() 
@@ -51,16 +88,9 @@ class HomeController extends BaseController {
 				return View::make('portfolio.b_entry');
 			}
 
-	// public function showWelcome()
-	// {
-	// 	return View::make('hello');
-	// }
+	public function contact() 
+	{
+		return View::make('portfolio.contact');
+	}
 
-	// public function sayHello($name)
-	// {
- //    	$data = array (
- //    		'newName' => $name
- //    		);
- //        return View::make('temp.my-first-view')->with($data);
-	// }
 }
